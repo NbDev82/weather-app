@@ -24,10 +24,26 @@ class WeatherService
   def forecast_weather(location, hour, quantity)
     response = query_api(location, hour)
 
-    weather = create_current_weather(response)
-    forecast_weathers = get_forecast_weather_in_next_4_days(response, quantity)
+    unless quantity
+      weather = create_current_weather(response)
+      weather_saved = Weather
+                        .where("location LIKE ?", "%#{location}%")
+                        .where(date: weather.date)
+                        .first
 
-    WeatherResponse.new(weather, forecast_weathers)
+      if weather_saved
+        fields_to_update = [:date, :temperature, :wind, :humidity, :condition, :url_img, :updated_at]
+        update_values = weather.attributes.slice(*fields_to_update)
+        update_values[:updated_at] = Time.now
+
+        weather_saved.update(update_values)
+      else
+        weather.save!
+      end
+    end
+
+      forecast_weathers = get_forecast_weather_in_next_4_days(response, quantity)
+      WeatherResponse.new(weather, forecast_weathers)
   end
 
   private
