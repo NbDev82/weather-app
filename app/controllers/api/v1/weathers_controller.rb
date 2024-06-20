@@ -3,7 +3,7 @@ require_relative '../../../service/weather_service'
 require 'date'
 
 class Api::V1::WeathersController < ApplicationController
-  before_action :set_location, :set_key, :set_day_for_forecast, only: [:get_weather, :get_forecast_weather]
+  before_action :set_location, :set_key, :set_day_for_forecast, only: [:get_weather, :get_forecast_weather, :get_history]
 
   def get_weather
     begin
@@ -35,6 +35,21 @@ class Api::V1::WeathersController < ApplicationController
       weather_response = @weather_service.forecast_weather(@location, current_hour, quantity)
 
       render json: weather_response.forecast_weathers, status: 200
+    rescue => e
+      render json: { error: e.message }, status: 500
+    end
+  end
+
+  def get_history
+    begin
+      @weather_service = WeatherService.new(@key,@days)
+
+      time = Time.now
+      formatted_date = time.strftime('%Y-%m-%d')
+
+      weather_history = @weather_service.get_history(@location, formatted_date)
+
+      render json: weather_history
     rescue => e
       render json: { error: e.message }, status: 500
     end

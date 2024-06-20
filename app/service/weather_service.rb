@@ -46,6 +46,13 @@ class WeatherService
       WeatherResponse.new(weather, forecast_weathers)
   end
 
+  def get_history(location, formatted_date)
+    Weather
+      .where("location LIKE ?", "%#{location}%")
+      .where("date LIKE ?", "%#{formatted_date}%")
+      .order("date ASC")
+  end
+
   private
 
   def handle_response(response)
