@@ -3,7 +3,7 @@ require_relative '../../../service/weather_service'
 require 'date'
 
 class Api::V1::WeathersController < ApplicationController
-  before_action :set_location, :set_key, :set_day_for_forecast, only: [:get_weather, :get_forecast_weather]
+  before_action :set_location, :set_key, :set_day_for_forecast, only: [:get_weather, :get_forecast_weather, :get_history]
 
   def get_weather
     begin
@@ -23,6 +23,14 @@ class Api::V1::WeathersController < ApplicationController
     begin
       quantity =  params[:quantity].to_i
 
+      if quantity.nil? || quantity <= 0
+        raise "You must search previously!"
+      end
+
+      if quantity % 4 != 0
+        raise "Some error occur, please reload page!"
+      end
+
       if quantity >=14
         raise "Can't forecast over 14 days!"
       end
@@ -35,6 +43,22 @@ class Api::V1::WeathersController < ApplicationController
       weather_response = @weather_service.forecast_weather(@location, current_hour, quantity)
 
       render json: weather_response.forecast_weathers, status: 200
+    rescue => e
+      render json: { error: e.message }, status: 500
+    end
+  end
+
+  def get_history
+    begin
+      @weather_service = WeatherService.new(@key,@days)
+
+      time = Time.now
+      formatted_date = time.strftime('%Y-%m-%d')
+
+      weather_response = @weather_service.get_history(@location, formatted_date)
+      weather_history = weather_response.forecast_weathers
+
+      render json: weather_history
     rescue => e
       render json: { error: e.message }, status: 500
     end

@@ -9,7 +9,7 @@ class WeatherService
     @days = days
   end
 
-  def query_api(location, hour)
+  def query_forecast_api(location, hour)
     query_params = { key: @api_key,
                      days: @days,
                      q: location}
@@ -21,8 +21,18 @@ class WeatherService
     handle_response(response)
   end
 
+  def query_history_api(location, formatted_date)
+    query_params = { key: @api_key,
+                     dt: formatted_date,
+                     q: location}
+
+    response = self.class.get("/history.json", query: query_params)
+
+    handle_response(response)
+  end
+
   def forecast_weather(location, hour, quantity)
-    response = query_api(location, hour)
+    response = query_forecast_api(location, hour)
 
     unless quantity
       weather = create_current_weather(response)
@@ -44,6 +54,51 @@ class WeatherService
 
       forecast_weathers = get_forecast_weather_in_next_4_days(response, quantity)
       WeatherResponse.new(weather, forecast_weathers)
+  end
+
+  def create_history_weather(history)
+    date = history['time']
+    temperature = "#{history['temp_c']}°C"
+
+    wind_kph = history['wind_kph']
+    wind_m_s = (wind_kph / 3.6).round(2)
+    wind = "#{wind_m_s} M/S"
+
+    humidity = "#{history['humidity']}%"
+    condition = history['condition']['text']
+    url_img = "https:#{history['condition']['icon']}"
+
+    Weather.new(
+      date: date,
+      temperature: temperature,
+      wind: wind,
+      humidity: humidity,
+      condition: condition,
+      url_img: url_img
+    )
+  end
+
+  def get_history_weathers(response)
+    current_hour = Time.now.hour
+    history_weathers = []
+    histories = response['forecast']['forecastday'][0]['hour']
+
+    histories.each do |history|
+      history_hour = history['time'].split(' ')[1].split(':').first.to_i
+
+      if history_hour <= current_hour
+        history_weather = create_history_weather(history)
+        history_weathers << history_weather
+      end
+    end
+
+    history_weathers
+  end
+
+  def get_history(location, formatted_date)
+    response = query_history_api(location, formatted_date)
+    history_weathers = get_history_weathers(response)
+    WeatherResponse.new(nil, history_weathers)
   end
 
   private
@@ -116,5 +171,4 @@ class WeatherService
 
     forecast_weathers
   end
-
 end

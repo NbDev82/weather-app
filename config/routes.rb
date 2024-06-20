@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         collection do
           get '' => 'weathers#get_weather'
           get 'forecast' => 'weathers#get_forecast_weather'
+          get 'history' => 'weathers#get_history'
         end
       end
     end
