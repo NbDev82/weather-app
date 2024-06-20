@@ -23,6 +23,14 @@ class Api::V1::WeathersController < ApplicationController
     begin
       quantity =  params[:quantity].to_i
 
+      if quantity.nil? || quantity <= 0
+        raise "You must search previously!"
+      end
+
+      if quantity % 4 != 0
+        raise "Some error occur, please reload page!"
+      end
+
       if quantity >=14
         raise "Can't forecast over 14 days!"
       end
@@ -47,7 +55,8 @@ class Api::V1::WeathersController < ApplicationController
       time = Time.now
       formatted_date = time.strftime('%Y-%m-%d')
 
-      weather_history = @weather_service.get_history(@location, formatted_date)
+      weather_response = @weather_service.get_history(@location, formatted_date)
+      weather_history = weather_response.forecast_weathers
 
       render json: weather_history
     rescue => e
