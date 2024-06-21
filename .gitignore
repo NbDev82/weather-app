@@ -10,6 +10,9 @@
 /test/version_tmp/
 /tmp/
 
+/config/master.key
+/log/development.log
+/.idea/weather_app.iml
 # Used by dotenv library to load environment variables.
 # .env
 

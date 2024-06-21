@@ -14,6 +14,8 @@ gem "pg"
 gem 'httparty'
 gem 'timezone'
 gem 'rack-cors'
+gem 'rufus-scheduler'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
