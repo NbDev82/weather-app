@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'timezone'
 
 class WeatherService
   include HTTParty
@@ -31,25 +32,19 @@ class WeatherService
     handle_response(response)
   end
 
+  def query_location_api(ip)
+    query_params = { key: @api_key,
+                     q: ip}
+
+    response = self.class.get("/ip.json", query: query_params)
+    handle_response(response)
+  end
+
   def forecast_weather(location, hour, quantity)
     response = query_forecast_api(location, hour)
 
     unless quantity
       weather = create_current_weather(response)
-      weather_saved = Weather
-                        .where("location LIKE ?", "%#{location}%")
-                        .where(date: weather.date)
-                        .first
-
-      if weather_saved
-        fields_to_update = [:date, :temperature, :wind, :humidity, :condition, :url_img, :updated_at]
-        update_values = weather.attributes.slice(*fields_to_update)
-        update_values[:updated_at] = Time.now
-
-        weather_saved.update(update_values)
-      else
-        weather.save!
-      end
     end
 
       forecast_weathers = get_forecast_weather_in_next_4_days(response, quantity)
@@ -79,25 +74,25 @@ class WeatherService
   end
 
   def get_history_weathers(response)
-    current_hour = Time.now.hour
     history_weathers = []
     histories = response['forecast']['forecastday'][0]['hour']
 
     histories.each do |history|
-      history_hour = history['time'].split(' ')[1].split(':').first.to_i
-
-      if history_hour <= current_hour
-        history_weather = create_history_weather(history)
-        history_weathers << history_weather
-      end
+      history_weather = create_history_weather(history)
+      history_weathers << history_weather
     end
 
     history_weathers
   end
 
+  def get_location(ip)
+    query_location_api(ip)
+  end
+
   def get_history(location, formatted_date)
     response = query_history_api(location, formatted_date)
     history_weathers = get_history_weathers(response)
+
     WeatherResponse.new(nil, history_weathers)
   end
 
@@ -134,7 +129,6 @@ class WeatherService
   end
 
   def create_current_weather(weather_data)
-
     location = weather_data['location']['name']
     date = weather_data['current']['last_updated']
     temperature = "#{weather_data['current']['temp_c']}°C"

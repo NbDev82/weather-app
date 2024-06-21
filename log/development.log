@@ -1,0 +1,2699 @@
+  [1m[35m (271.6ms)[0m  [1m[35mCREATE DATABASE "weather_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (222.9ms)[0m  [1m[35mCREATE DATABASE "weather_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6030057993707673765)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-06-20 07:28:36.780517', '2024-06-20 07:28:36.780520') RETURNING "key"[0m
+Migrating to CreateWeathers (20240620072259)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "weathers" ("id" bigserial primary key, "location" character varying, "date" character varying, "temperature" character varying, "wind" character varying, "humidity" character varying, "condition" character varying, "url_img" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240620072259') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6030057993707673765)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:10:37 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::WeathersController):
+  
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:155:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.1.3) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.3) lib/rack/etag.rb:29:in `call'
+rack (3.1.3) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.3) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.3) lib/rack/method_override.rb:28:in `call'
+rack (3.1.3) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.3) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:11:22 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 22882ms (ActiveRecord: 0.0ms | Allocations: 30445)
+
+
+  
+NoMethodError (undefined method `current_and_forecast_weather' for nil):
+  
+app/controllers/api/v1/weathers_controller.rb:15:in `get_weather'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:12:00 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 22006ms (ActiveRecord: 0.0ms | Allocations: 38475)
+
+
+  
+NoMethodError (undefined method `current_and_forecast_weather' for nil):
+  
+app/controllers/api/v1/weathers_controller.rb:15:in `get_weather'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:12:48 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2363ms (ActiveRecord: 0.0ms | Allocations: 7607)
+
+
+  
+NoMethodError (undefined method `current_and_forecast_weather' for nil):
+  
+app/controllers/api/v1/weathers_controller.rb:15:in `get_weather'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:13:00 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 3320ms (ActiveRecord: 0.0ms | Allocations: 7733)
+
+
+  
+NoMethodError (undefined method `current_and_forecast_weather' for nil):
+  
+app/controllers/api/v1/weathers_controller.rb:15:in `get_weather'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:14:15 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 11960ms (ActiveRecord: 0.0ms | Allocations: 10092)
+
+
+  
+NameError (uninitialized constant Api::V1::WeathersController::ActionControllerError):
+  
+app/controllers/api/v1/weathers_controller.rb:17:in `rescue in get_weather'
+app/controllers/api/v1/weathers_controller.rb:15:in `get_weather'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:14:39 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 1512ms (ActiveRecord: 0.0ms | Allocations: 8052)
+
+
+  
+NameError (uninitialized constant Api::V1::WeathersController::ActionControllerError):
+  
+app/controllers/api/v1/weathers_controller.rb:17:in `rescue in get_weather'
+app/controllers/api/v1/weathers_controller.rb:15:in `get_weather'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:15:04 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 14337ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 17674)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/api/v1/weathers_controller.rb:21:in `get_weather'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:21:07 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 31038ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 28682)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:28:05 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 20811ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 35159)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:28:31 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 26900ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 42619)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:29:06 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (12.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 32948ms (Views: 1.2ms | ActiveRecord: 35.2ms | Allocations: 50368)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:30:56 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 6348ms (Views: 0.4ms | ActiveRecord: 23.0ms | Allocations: 32563)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:31:15 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 592ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1324)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:33:20 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 5287ms (Views: 0.3ms | ActiveRecord: 19.4ms | Allocations: 22898)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:48:23 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1379ms (Views: 0.8ms | ActiveRecord: 24.8ms | Allocations: 22866)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 15:51:38 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 6489ms (Views: 11.1ms | ActiveRecord: 20.0ms | Allocations: 23126)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:00:56 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1807ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 3247)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:12:05 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 13237ms (Views: 0.6ms | ActiveRecord: 26.2ms | Allocations: 35647)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:12:24 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 12985ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 48353)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:13:00 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 9459ms (Views: 0.5ms | ActiveRecord: 19.0ms | Allocations: 41105)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:13:13 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 24549ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 59776)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:13:40 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 26151ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 27595)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:17:15 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 20309ms (Views: 0.6ms | ActiveRecord: 22.2ms | Allocations: 51731)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:19:18 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 36307ms (Views: 0.5ms | ActiveRecord: 45.3ms | Allocations: 89883)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:20:35 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 106991ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 76198)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:22:27 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 72942ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 28511)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 16:24:59 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 26912ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 18941)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:06:01 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 7556ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 21257)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:06:11 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 80350ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 10105)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:07:43 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 44652ms (Views: 0.2ms | ActiveRecord: 20.3ms | Allocations: 63599)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:09:46 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 36070ms (Views: 0.7ms | ActiveRecord: 21.0ms | Allocations: 54443)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:10:48 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 39514ms (Views: 1.2ms | ActiveRecord: 21.7ms | Allocations: 71530)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:11:46 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 64085ms (Views: 8.7ms | ActiveRecord: 20.9ms | Allocations: 124150)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:14:28 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 4842ms (Views: 0.7ms | ActiveRecord: 23.9ms | Allocations: 32244)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:15:58 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 190511ms (Views: 0.6ms | ActiveRecord: 17.4ms | Allocations: 73490)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:22:16 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+LoadError (cannot load such file -- http):
+  
+app/service/weather_service.rb:1:in `<main>'
+app/controllers/api/v1/weathers_controller.rb:1:in `require_relative'
+app/controllers/api/v1/weathers_controller.rb:1:in `<main>'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:22:35 +0700
+  
+LoadError (cannot load such file -- http):
+  
+app/service/weather_service.rb:1:in `<main>'
+app/controllers/api/v1/weathers_controller.rb:1:in `require_relative'
+app/controllers/api/v1/weathers_controller.rb:1:in `<main>'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:22:57 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+LoadError (cannot load such file -- http):
+  
+app/service/weather_service.rb:1:in `<main>'
+app/controllers/api/v1/weathers_controller.rb:1:in `require_relative'
+app/controllers/api/v1/weathers_controller.rb:1:in `<main>'
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:24:02 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 18355ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 24979)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:24:36 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 11602ms (Views: 0.6ms | ActiveRecord: 25.6ms | Allocations: 47785)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:25:36 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 23290ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 12947)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:26:01 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 21284ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 27921)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:26:24 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 15251ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 33873)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:27:03 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 26164ms (Views: 0.6ms | ActiveRecord: 19.5ms | Allocations: 59228)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:28:09 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 36968ms (Views: 0.7ms | ActiveRecord: 24.6ms | Allocations: 51475)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:29:40 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 10807ms (Views: 0.6ms | ActiveRecord: 17.9ms | Allocations: 23732)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:32:38 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 16104ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 11991)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:33:08 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed   in 51428ms (ActiveRecord: 0.0ms | Allocations: 7250)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:34:40 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 29347ms (Views: 1.3ms | ActiveRecord: 18.6ms | Allocations: 45339)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:36:11 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1051ms (Views: 1.4ms | ActiveRecord: 20.8ms | Allocations: 23874)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:37:27 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1545ms (Views: 1.2ms | ActiveRecord: 19.3ms | Allocations: 23442)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 17:43:42 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 3772ms (Views: 0.5ms | ActiveRecord: 18.2ms | Allocations: 23560)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:05:51 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1992ms (Views: 0.4ms | ActiveRecord: 21.9ms | Allocations: 23498)
+
+
+Started GET "/api/v1/forecast?date=2024-06-24" for 127.0.0.1 at 2024-06-20 18:06:39 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/forecast"):
+  
+Started GET "/api/v1/forecast?date=2024-06-24" for 127.0.0.1 at 2024-06-20 18:06:43 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/forecast"):
+  
+Started GET "/api/v1/weathers/forecast?date=2024-06-24" for 127.0.0.1 at 2024-06-20 18:07:01 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24"}
+Completed 500 Internal Server Error in 1648ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 8344)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24" for 127.0.0.1 at 2024-06-20 18:07:20 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24"}
+Completed 500 Internal Server Error in 2913ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 7430)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24" for 127.0.0.1 at 2024-06-20 18:07:59 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24"}
+Completed 200 OK in 3825ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 12592)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24" for 127.0.0.1 at 2024-06-20 18:08:34 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24"}
+Completed 200 OK in 1489ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 3500)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:09:03 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 602ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1563)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:09:52 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 25363ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 11458)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:10:27 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 3798ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 11071)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:10:49 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 197ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 1581)
+
+
+Started GET "/api/v1/weathers/forecast?date=2024-06-24&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:10:52 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"date"=>"2024-06-24", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 16525ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 8498)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:11:12 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 7594ms (Views: 0.4ms | ActiveRecord: 24.8ms | Allocations: 41110)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:17:09 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1557ms (Views: 0.4ms | ActiveRecord: 25.3ms | Allocations: 23495)
+
+
+Started GET "/api/v1/weathers/quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:17:28 +0700
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for Api::V1::WeathersController):
+  
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:155:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.1.3) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.3) lib/rack/etag.rb:29:in `call'
+rack (3.1.3) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.3) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.3) lib/rack/method_override.rb:28:in `call'
+rack (3.1.3) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.3) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:17:40 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 4ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 472)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:17:50 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 6626ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 41307)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:19:24 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 1092ms (Views: 1.3ms | ActiveRecord: 25.4ms | Allocations: 23807)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:20:48 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed   in 10739ms (ActiveRecord: 0.0ms | Allocations: 10003)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:22:16 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 4877ms (Views: 0.3ms | ActiveRecord: 25.7ms | Allocations: 32190)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:22:37 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 9933ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 7976)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:23:46 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 8ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1611)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:24:11 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 77808ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 71561)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:25:48 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed   in 69176ms (ActiveRecord: 0.0ms | Allocations: 73333)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:27:49 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:28:57 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 3761ms (Views: 0.4ms | ActiveRecord: 22.5ms | Allocations: 23469)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=15&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:30:27 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"15", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2059ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 4362)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/api/v1/weathers_controller.rb:104:in `rescue in get_forecast_weather'
+app/controllers/api/v1/weathers_controller.rb:86:in `get_forecast_weather'
+Started GET "/api/v1/weathers/forecast?quantity=15&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:33:59 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"15", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 8ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1599)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:43:21 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 13409ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 13135)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:43:36 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 6590ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 17046)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:43:59 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 30316ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 30934)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:44:32 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed   in 16578ms (ActiveRecord: 0.0ms | Allocations: 20812)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:45:27 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 10746ms (Views: 0.5ms | ActiveRecord: 28.1ms | Allocations: 44829)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:45:51 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 1400ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 2150)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:47:19 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 892ms (Views: 0.4ms | ActiveRecord: 24.2ms | Allocations: 23614)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 18:47:33 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 548ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1794)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:01:53 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.8ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE "weathers"."date" = $1 LIMIT $2[0m  [["date", "2024-06-20 21:00"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:29:in `forecast_weather'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:34:in `forecast_weather'
+  [1m[36mWeather Create (5.5ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-20 21:00"], ["temperature", "29.1°C"], ["wind", "5.19 M/S"], ["humidity", "71%"], ["condition", "Patchy light rain"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/293.png"], ["created_at", "2024-06-20 14:02:22.180612"], ["updated_at", "2024-06-20 14:02:22.180612"]]
+  ↳ app/service/weather_service.rb:34:in `forecast_weather'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:34:in `forecast_weather'
+Completed 200 OK in 30805ms (Views: 1.5ms | ActiveRecord: 44.8ms | Allocations: 109112)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:03:15 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.3ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE "weathers"."date" = $1 LIMIT $2[0m  [["date", "2024-06-20 21:00"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:29:in `forecast_weather'
+Completed 500 Internal Server Error in 21590ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 103345)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:08:03 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.3ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE "weathers"."date" = $1 LIMIT $2[0m  [["date", "2024-06-20 21:00"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:29:in `forecast_weather'
+Completed 500 Internal Server Error in 23945ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 19010)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:09:17 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.2ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE "weathers"."date" = $1 LIMIT $2[0m  [["date", "2024-06-20 21:00"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:29:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mWeather Update (11.8ms)[0m  [1m[33mUPDATE "weathers" SET "id" = $1, "temperature" = $2, "wind" = $3, "humidity" = $4, "condition" = $5, "url_img" = $6, "created_at" = $7, "updated_at" = $8 WHERE "weathers"."id" = $9[0m  [["id", nil], ["temperature", "27.1°C"], ["wind", "6.69 M/S"], ["humidity", "84%"], ["condition", "Moderate or heavy rain shower"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/356.png"], ["created_at", nil], ["updated_at", nil], ["id", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+Completed 500 Internal Server Error in 10292ms (Views: 0.2ms | ActiveRecord: 35.7ms | Allocations: 58827)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:10:20 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.1ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE "weathers"."date" = $1 LIMIT $2[0m  [["date", "2024-06-20 21:00"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:29:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+  [1m[36mWeather Update (2.9ms)[0m  [1m[33mUPDATE "weathers" SET "temperature" = $1, "wind" = $2, "humidity" = $3, "condition" = $4, "url_img" = $5, "created_at" = $6, "updated_at" = $7 WHERE "weathers"."id" = $8[0m  [["temperature", "27.1°C"], ["wind", "6.69 M/S"], ["humidity", "84%"], ["condition", "Moderate or heavy rain shower"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/356.png"], ["created_at", nil], ["updated_at", nil], ["id", 1]]
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+Completed 500 Internal Server Error in 1878ms (Views: 0.2ms | ActiveRecord: 27.1ms | Allocations: 38199)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:14:41 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.1ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE "weathers"."date" = $1 LIMIT $2[0m  [["date", "2024-06-20 21:00"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:29:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mWeather Update (2.5ms)[0m  [1m[33mUPDATE "weathers" SET "temperature" = $1, "wind" = $2, "humidity" = $3, "condition" = $4, "url_img" = $5, "updated_at" = $6 WHERE "weathers"."id" = $7[0m  [["temperature", "27.1°C"], ["wind", "6.69 M/S"], ["humidity", "84%"], ["condition", "Moderate or heavy rain shower"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/356.png"], ["updated_at", "2024-06-20 14:14:57.223098"], ["id", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+Completed 200 OK in 15478ms (Views: 0.7ms | ActiveRecord: 26.5ms | Allocations: 63453)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:23:34 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (14.5ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 21:15"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mWeather Create (2.8ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-20 21:15"], ["temperature", "26.4°C"], ["wind", "6.11 M/S"], ["humidity", "89%"], ["condition", "Moderate rain"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/302.png"], ["created_at", "2024-06-20 14:23:49.380289"], ["updated_at", "2024-06-20 14:23:49.380289"]]
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+Completed 200 OK in 14680ms (Views: 1.9ms | ActiveRecord: 40.1ms | Allocations: 61014)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:25:44 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.6ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mWeather Create (2.9ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-20 21:15"], ["temperature", "26.4°C"], ["wind", "6.11 M/S"], ["humidity", "89%"], ["condition", "Moderate rain"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/302.png"], ["created_at", "2024-06-20 14:26:00.372255"], ["updated_at", "2024-06-20 14:26:00.372255"]]
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+Completed 200 OK in 15499ms (Views: 2.1ms | ActiveRecord: 26.5ms | Allocations: 39890)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:27:48 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed   in 41400ms (ActiveRecord: 0.0ms | Allocations: 13223)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:29:03 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (2.3ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:42:in `forecast_weather'
+  [1m[36mWeather Create (2.8ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-20 21:15"], ["temperature", "26.4°C"], ["wind", "6.11 M/S"], ["humidity", "89%"], ["condition", "Moderate rain"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/302.png"], ["created_at", "2024-06-20 14:29:43.123222"], ["updated_at", "2024-06-20 14:29:43.123222"]]
+  ↳ app/service/weather_service.rb:42:in `forecast_weather'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:42:in `forecast_weather'
+Completed 200 OK in 39742ms (Views: 1.6ms | ActiveRecord: 35.1ms | Allocations: 71389)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:30:55 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (3.3ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND (date LIKE '%2024-06-20%') ORDER BY "weathers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mWeather Update (1.9ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-20 14:31:11.901243"], ["id", 1]]
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+Completed 200 OK in 15860ms (Views: 0.5ms | ActiveRecord: 26.4ms | Allocations: 40144)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:31:23 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.5ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND (date LIKE '%2024-06-20%') ORDER BY "weathers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mWeather Update (2.8ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-20 14:32:17.887781"], ["id", 1]]
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+Completed 200 OK in 54769ms (Views: 0.3ms | ActiveRecord: 7.6ms | Allocations: 20494)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:34:02 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.7ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 21:15"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mWeather Update (2.1ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-20 14:34:13.644611"], ["id", 2]]
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+Completed 200 OK in 10901ms (Views: 0.5ms | ActiveRecord: 34.8ms | Allocations: 38240)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:34:20 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.5ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 21:15"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:33:in `forecast_weather'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mWeather Update (3.1ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-20 14:34:45.524629"], ["id", 2]]
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:40:in `forecast_weather'
+Completed 200 OK in 25352ms (Views: 0.5ms | ActiveRecord: 4.6ms | Allocations: 16231)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:55:38 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.6ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 21:45"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mWeather Create (3.9ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-20 21:45"], ["temperature", "24.2°C"], ["wind", "6.11 M/S"], ["humidity", "100%"], ["condition", "Torrential rain shower"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/359.png"], ["created_at", "2024-06-20 14:55:50.316220"], ["updated_at", "2024-06-20 14:55:50.316220"]]
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+Completed 200 OK in 11025ms (Views: 2.6ms | ActiveRecord: 14.9ms | Allocations: 28622)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:55:54 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.7ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 21:45"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:39:in `forecast_weather'
+  [1m[36mWeather Update (2.4ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-20 14:55:59.884260"], ["id", 5]]
+  ↳ app/service/weather_service.rb:39:in `forecast_weather'
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:39:in `forecast_weather'
+Completed 200 OK in 7931ms (Views: 1.4ms | ActiveRecord: 14.1ms | Allocations: 61695)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=4&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:56:25 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"4", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 1088ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1842)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=8&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 21:56:43 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"8", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 10788ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 49800)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:14:07 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"user"=>{"name"=>"John Doe", "email"=>"john.doe@example.com"}, "location"=>"Ho Chi Minh", "weather"=>{}}
+  [1m[36mWeather Load (1.3ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND (date LIKE '%2024-06-20%')[0m
+  ↳ app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Completed 200 OK in 209ms (Views: 28.6ms | ActiveRecord: 25.7ms | Allocations: 14997)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:15:04 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 3650ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 9614)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:15:20 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 4944ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 36616)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:15:28 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 5962ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 8360)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:20:09 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.7ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 22:15"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mWeather Create (1.8ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-20 22:15"], ["temperature", "24.4°C"], ["wind", "6.69 M/S"], ["humidity", "94%"], ["condition", "Light rain"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/296.png"], ["created_at", "2024-06-20 15:20:18.819721"], ["updated_at", "2024-06-20 15:20:18.819721"]]
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:41:in `forecast_weather'
+Completed 200 OK in 8992ms (Views: 1.6ms | ActiveRecord: 33.5ms | Allocations: 44856)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:20:22 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.9ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 22:15"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:32:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:39:in `forecast_weather'
+  [1m[36mWeather Update (1.9ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-20 15:20:25.362952"], ["id", 6]]
+  ↳ app/service/weather_service.rb:39:in `forecast_weather'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:39:in `forecast_weather'
+Completed 200 OK in 2694ms (Views: 0.3ms | ActiveRecord: 3.8ms | Allocations: 11144)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:20:30 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.7ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND (date LIKE '%2024-06-20%')[0m
+  ↳ app/controllers/api/v1/weathers_controller.rb:52:in `get_history'
+Completed 200 OK in 8ms (Views: 4.9ms | ActiveRecord: 0.6ms | Allocations: 1265)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 22:25:37 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (2.7ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND (date LIKE '%2024-06-20%') ORDER BY date ASC[0m
+  ↳ app/controllers/api/v1/weathers_controller.rb:52:in `get_history'
+Completed 200 OK in 173ms (Views: 17.7ms | ActiveRecord: 23.7ms | Allocations: 24066)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6030057993707673765)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateWeathers (20240620153836)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE TABLE "weathers" ("id" bigserial primary key, "email" character varying, "location" character varying, "date" character varying, "temperature" character varying, "wind" character varying, "humidity" character varying, "condition" character varying, "url_img" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6030057993707673765)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:08:23 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 1426ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 3768)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:08:33 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 9609ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 23249)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:08:47 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 10830ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 28043)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:09:03 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 28852ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 25856)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:11:12 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 7330ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 10773)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:11:30 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 8492ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 8512)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:11:58 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2825ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 11048)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:12:04 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 5813ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 38124)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:12:12 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 25046ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 8513)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:13:25 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 491ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 4999)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:14:42 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 5889ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 11220)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:15:20 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 21349ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 31274)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:15:51 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 4234ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 19012)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:16:18 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 4657ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 16826)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:16:37 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 7055ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 37551)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:17:24 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 8140ms (Views: 0.3ms | ActiveRecord: 21.4ms | Allocations: 107994)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:18:10 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 10902ms (Views: 0.5ms | ActiveRecord: 21.4ms | Allocations: 47388)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:19:12 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 3502ms (Views: 2.6ms | ActiveRecord: 23.8ms | Allocations: 47185)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:20:26 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 571ms (Views: 0.8ms | ActiveRecord: 22.7ms | Allocations: 24858)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:21:05 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.9ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-20 23:15"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:42:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:51:in `forecast_weather'
+  [1m[36mWeather Create (2.0ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-20 23:15"], ["temperature", "25.1°C"], ["wind", "4.19 M/S"], ["humidity", "94%"], ["condition", "Light rain"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/night/296.png"], ["created_at", "2024-06-20 16:21:06.967014"], ["updated_at", "2024-06-20 16:21:06.967014"]]
+  ↳ app/service/weather_service.rb:51:in `forecast_weather'
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:51:in `forecast_weather'
+Completed 200 OK in 1486ms (Views: 0.6ms | ActiveRecord: 15.5ms | Allocations: 21751)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=8&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:21:23 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"8", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 791ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1986)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=0&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:21:47 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"0", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 172ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1683)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=0&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:23:10 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"0", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1599)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=1&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:23:15 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"1", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 1143ms (Views: 0.3ms | ActiveRecord: 18.3ms | Allocations: 22280)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=7&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:24:25 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"7", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 546)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=8&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:24:30 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"8", "location"=>"Ho Chi Minh"}
+Completed 200 OK in 2400ms (Views: 0.3ms | ActiveRecord: 3.4ms | Allocations: 6736)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=1&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:24:37 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"1", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=0&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:24:41 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"0", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 454)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=0&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:26:22 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"0", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 8ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1599)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:26:29 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 456)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=0&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-20 23:26:32 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"0", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:00:36 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 2506ms (Views: 0.3ms | ActiveRecord: 60.5ms | Allocations: 22511)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:17:56 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 2583ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1768)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:26:58 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 28ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1639)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:32:26 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 234ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 3291)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:35:25 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2356ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 3415)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:35:51 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 419ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 3376)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:36:25 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 433ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 3378)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:38:25 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 566ms (Views: 0.6ms | ActiveRecord: 37.5ms | Allocations: 23839)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:39:51 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2560ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 3526)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:40:59 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 532ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 6412)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:41:19 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 19067ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 30792)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:42:46 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 51935ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 36229)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:45:04 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 76563ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 32126)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:46:23 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 43968ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 36221)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 00:48:23 +0700
+Processing by Api::V1::WeathersController#get_history as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 26984ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 19795)
+
+
+Started GET "/" for 127.0.0.1 at 2024-06-21 00:51:26 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 349)
+Completed 200 OK in 269ms (Views: 45.6ms | ActiveRecord: 0.0ms | Allocations: 4015)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 10:43:41 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (3.1ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-21 10:30"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:43:in `forecast_weather'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:52:in `forecast_weather'
+  [1m[36mWeather Create (4.2ms)[0m  [1m[32mINSERT INTO "weathers" ("location", "date", "temperature", "wind", "humidity", "condition", "url_img", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["location", "Ho Chi Minh City"], ["date", "2024-06-21 10:30"], ["temperature", "29.3°C"], ["wind", "1.0 M/S"], ["humidity", "79%"], ["condition", "Partly cloudy"], ["url_img", "https://cdn.weatherapi.com/weather/64x64/day/116.png"], ["created_at", "2024-06-21 03:43:43.322335"], ["updated_at", "2024-06-21 03:43:43.322335"]]
+  ↳ app/service/weather_service.rb:52:in `forecast_weather'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:52:in `forecast_weather'
+Completed 200 OK in 1243ms (Views: 0.7ms | ActiveRecord: 42.1ms | Allocations: 31567)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 10:43:43 +0700
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 10:43:43 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (1.7ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-21 10:30"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:43:in `forecast_weather'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mWeather Update (2.8ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-21 03:43:43.654355"], ["id", 8]]
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+Completed 200 OK in 173ms (Views: 0.4ms | ActiveRecord: 5.3ms | Allocations: 7131)
+
+
+  [1m[36mWeather Load (1.7ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-21 10:30"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:43:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mWeather Update (2.2ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-21 03:43:43.754512"], ["id", 8]]
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+Completed 200 OK in 267ms (Views: 0.4ms | ActiveRecord: 11.5ms | Allocations: 10692)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 10:43:43 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.5ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-21 10:30"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:43:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mWeather Update (2.7ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-21 03:43:44.014202"], ["id", 8]]
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+Completed 200 OK in 178ms (Views: 0.3ms | ActiveRecord: 3.8ms | Allocations: 3886)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 10:43:44 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+  [1m[36mWeather Load (0.6ms)[0m  [1m[34mSELECT "weathers".* FROM "weathers" WHERE (location LIKE '%Ho Chi Minh%') AND "weathers"."date" = $1 ORDER BY "weathers"."id" ASC LIMIT $2[0m  [["date", "2024-06-21 10:30"], ["LIMIT", 1]]
+  ↳ app/service/weather_service.rb:43:in `forecast_weather'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mWeather Update (2.2ms)[0m  [1m[33mUPDATE "weathers" SET "updated_at" = $1 WHERE "weathers"."id" = $2[0m  [["updated_at", "2024-06-21 03:43:44.266944"], ["id", 8]]
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/service/weather_service.rb:50:in `forecast_weather'
+Completed 200 OK in 186ms (Views: 0.3ms | ActiveRecord: 13.8ms | Allocations: 3900)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 10:49:00 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 553ms (Views: 0.3ms | ActiveRecord: 10.5ms | Allocations: 6816)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 10:52:11 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1362ms (Views: 0.4ms | ActiveRecord: 16.3ms | Allocations: 25406)
+
+
+Started GET "/api/v1/weathers?location=Lon%20Don" for 127.0.0.1 at 2024-06-21 10:53:19 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Lon Don"}
+Completed 200 OK in 807ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1792)
+
+
+Started GET "/api/v1/weathers?location=LonDon" for 127.0.0.1 at 2024-06-21 10:53:25 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"LonDon"}
+Completed 200 OK in 480ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1791)
+
+
+Started GET "/api/v1/weathers?location=Lon%20Don" for 127.0.0.1 at 2024-06-21 10:53:33 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Lon Don"}
+Completed 200 OK in 147ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1766)
+
+
+Started GET "/api/v1/weathers?location=Newyork" for 127.0.0.1 at 2024-06-21 10:53:45 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Newyork"}
+Completed 500 Internal Server Error in 480ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1606)
+
+
+Started GET "/api/v1/weathers?location=Newyork" for 127.0.0.1 at 2024-06-21 10:53:47 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Newyork"}
+Completed 500 Internal Server Error in 151ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1558)
+
+
+Started GET "/api/v1/weathers?location=New%20york" for 127.0.0.1 at 2024-06-21 10:53:51 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"New york"}
+Completed 200 OK in 775ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1766)
+
+
+Started GET "/api/v1/weathers?location=Newyork" for 127.0.0.1 at 2024-06-21 10:53:56 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Newyork"}
+Completed 500 Internal Server Error in 492ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1580)
+
+
+Started GET "/api/v1/weathers?location=New%20york" for 127.0.0.1 at 2024-06-21 10:54:00 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"New york"}
+Completed 200 OK in 173ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1765)
+
+
+Started GET "/api/v1/weathers?location=London" for 127.0.0.1 at 2024-06-21 10:57:27 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"London"}
+Completed 200 OK in 795ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1871)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=undefined" for 127.0.0.1 at 2024-06-21 11:13:48 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"undefined"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 459)
+
+
+Started GET "/api/v1/weathers?location=London" for 127.0.0.1 at 2024-06-21 11:14:27 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"London"}
+Completed 200 OK in 485ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1798)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=undefined" for 127.0.0.1 at 2024-06-21 11:14:30 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"undefined"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=undefined" for 127.0.0.1 at 2024-06-21 11:16:05 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"undefined"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 456)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:16:33 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 1068ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1857)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:16:45 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 153ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1783)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:17:09 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 173ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1760)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:17:41 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 168ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1763)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:17:57 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 182ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:18:49 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 164ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1781)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:19:08 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 171ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1780)
+
+
+Started GET "/api/v1/weathers?location=London" for 127.0.0.1 at 2024-06-21 11:20:28 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"London"}
+Completed 200 OK in 465ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1805)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:21:03 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 1123ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1788)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:23:39 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 172ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1780)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:23:44 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 140ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1759)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:25:18 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 608ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1780)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 11:25:19 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 171ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:42:06 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 401ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2684)
+
+
+Started GET "/api/v1/weathers?location=London" for 127.0.0.1 at 2024-06-21 11:42:07 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"London"}
+Completed 200 OK in 677ms (Views: 0.4ms | ActiveRecord: 22.7ms | Allocations: 23582)
+
+
+Started GET "/api/v1/weathers?location=null" for 127.0.0.1 at 2024-06-21 11:49:17 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"null"}
+Completed 200 OK in 504ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1844)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:49:22 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 155ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 890)
+
+
+Started GET "/api/v1/weathers?location=null" for 127.0.0.1 at 2024-06-21 11:49:22 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"null"}
+Completed 200 OK in 170ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1766)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:49:49 +0700
+Processing by Api::V1::WeathersController#get_location as */*
+  Parameters: {"name"=>"Add your name in the body", "ip"=>"14.169.94.214", "weather"=>{}}
+Completed 200 OK in 146ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 892)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:50:37 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_location as */*
+  Parameters: {"name"=>"Add your name in the body", "ip"=>"14.169.94.214", "weather"=>{}}
+Completed 200 OK in 41655ms (Views: 1.5ms | ActiveRecord: 17.8ms | Allocations: 65460)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:51:58 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_location as */*
+  Parameters: {"name"=>"Add your name in the body", "ip"=>"14.169.94.214", "weather"=>{}}
+Completed 200 OK in 3223ms (Views: 0.6ms | ActiveRecord: 17.0ms | Allocations: 11082)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:52:11 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 170ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1217)
+
+
+Started GET "/api/v1/weathers?location=null" for 127.0.0.1 at 2024-06-21 11:52:12 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"null"}
+Completed 200 OK in 266ms (Views: 0.4ms | ActiveRecord: 3.3ms | Allocations: 28321)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:52:42 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 144ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1218)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 11:52:42 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 767ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1808)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:53:07 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 173ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1215)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 11:53:07 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 165ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1784)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 11:53:40 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 167ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1216)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 11:53:40 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 172ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1762)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:20:10 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 853ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1217)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:20:10 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 467ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 1787)
+
+
+Started GET "/api/v1/weathers?location=London" for 127.0.0.1 at 2024-06-21 13:20:13 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"London"}
+Completed 200 OK in 782ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1870)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:20:15 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 139ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1221)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:20:16 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 141ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1763)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 13:20:28 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 771ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1813)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=8" for 127.0.0.1 at 2024-06-21 13:20:34 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"8"}
+Completed 200 OK in 1056ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1891)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=12" for 127.0.0.1 at 2024-06-21 13:20:39 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"12"}
+Completed 200 OK in 463ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1714)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=13" for 127.0.0.1 at 2024-06-21 13:20:41 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"13"}
+Completed 500 Internal Server Error in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 462)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=13" for 127.0.0.1 at 2024-06-21 13:20:44 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"13"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 456)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=13" for 127.0.0.1 at 2024-06-21 13:20:58 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"13"}
+Completed 500 Internal Server Error in 78829ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 39608)
+
+
+Started GET "/api/v1/weathers?location=London" for 127.0.0.1 at 2024-06-21 13:22:54 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"London"}
+Completed 200 OK in 852ms (Views: 0.5ms | ActiveRecord: 23.0ms | Allocations: 23533)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:23:00 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 148ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1231)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:23:00 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 171ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1820)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 13:23:04 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 5143ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 20914)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=8" for 127.0.0.1 at 2024-06-21 13:23:14 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"8"}
+Completed 200 OK in 4866ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 19910)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=12" for 127.0.0.1 at 2024-06-21 13:23:28 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"12"}
+Completed 200 OK in 5229ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 19707)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=13" for 127.0.0.1 at 2024-06-21 13:23:36 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"13"}
+Completed 500 Internal Server Error in 8869ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 39122)
+
+
+Started GET "/api/v1/weathers/forecast?quantity=13&location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:24:08 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as */*
+  Parameters: {"quantity"=>"13", "location"=>"Ho Chi Minh"}
+Completed 500 Internal Server Error in 2918ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 8006)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=13" for 127.0.0.1 at 2024-06-21 13:25:26 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"13"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=13" for 127.0.0.1 at 2024-06-21 13:25:29 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"13"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:25:53 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 790ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1251)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:25:54 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 479ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 1837)
+
+
+Started GET "/api/v1/weathers/forecast?location=&quantity=4" for 127.0.0.1 at 2024-06-21 13:25:56 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"", "quantity"=>"4"}
+Completed 500 Internal Server Error in 779ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1611)
+
+
+Started GET "/api/v1/weathers/forecast?location=&quantity=4" for 127.0.0.1 at 2024-06-21 13:25:59 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"", "quantity"=>"4"}
+Completed 500 Internal Server Error in 172ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1573)
+
+
+Started GET "/api/v1/weathers/forecast?location=&quantity=4" for 127.0.0.1 at 2024-06-21 13:26:06 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"", "quantity"=>"4"}
+Completed 500 Internal Server Error in 1043ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1581)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:26:20 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 153ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1217)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:26:21 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 153ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+Started GET "/api/v1/weathers/forecast?location=&quantity=4" for 127.0.0.1 at 2024-06-21 13:26:22 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"", "quantity"=>"4"}
+Completed 500 Internal Server Error in 470ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1572)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:26:52 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 138ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1212)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:26:52 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 154ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1738)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=4" for 127.0.0.1 at 2024-06-21 13:26:55 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"4"}
+Completed 200 OK in 779ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1783)
+
+
+Started GET "/api/v1/weathers?location=Lodon" for 127.0.0.1 at 2024-06-21 13:27:02 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Lodon"}
+Completed 200 OK in 777ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1786)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:27:04 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 151ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1213)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:27:04 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 150ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=4" for 127.0.0.1 at 2024-06-21 13:27:30 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"4"}
+Completed 200 OK in 139ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1756)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=8" for 127.0.0.1 at 2024-06-21 13:28:58 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"8"}
+Completed 200 OK in 1099ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1915)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:30:49 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 773ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1222)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:30:50 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 487ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1742)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:33:48 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 200ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1214)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:33:49 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 171ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 1738)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:33:50 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 172ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1841)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=4" for 127.0.0.1 at 2024-06-21 13:35:10 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"4"}
+Completed 200 OK in 770ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1794)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:35:25 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 480ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1227)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:35:26 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 467ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1785)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:36:30 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 152ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1217)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:36:31 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 138ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1778)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:36:33 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 163ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1213)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:36:33 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 141ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1807)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:38:27 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 782ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1234)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:38:28 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 519ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1786)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=4" for 127.0.0.1 at 2024-06-21 13:38:29 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"4"}
+Completed 200 OK in 1258ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1792)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=8" for 127.0.0.1 at 2024-06-21 13:38:34 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"8"}
+Completed 200 OK in 1108ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1915)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=12" for 127.0.0.1 at 2024-06-21 13:38:39 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"12"}
+Completed 200 OK in 1088ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1739)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:39:10 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 164ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1213)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 13:39:10 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 155ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=4" for 127.0.0.1 at 2024-06-21 13:39:13 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"4"}
+Completed 200 OK in 183ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 1841)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:47:19 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Filter chain halted as :set_location rendered or redirected
+Completed 404 Not Found in 7ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1304)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:47:36 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Filter chain halted as :set_location rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 114)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:47:43 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Filter chain halted as :set_location rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 114)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:47:45 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Filter chain halted as :set_location rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 114)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:48:05 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Filter chain halted as :set_location rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 114)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:49:24 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Filter chain halted as :set_location rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 114)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:49:31 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Filter chain halted as :set_location rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 114)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:53:53 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (4.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Filter chain halted as :set_location rendered or redirected
+Completed 500 Internal Server Error in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1550)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:54:04 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Filter chain halted as :set_location rendered or redirected
+Completed 500 Internal Server Error in 5909ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 7630)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:54:24 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 905ms (Views: 0.4ms | ActiveRecord: 28.7ms | Allocations: 23556)
+
+
+Started GET "/api/v1/weathers" for 127.0.0.1 at 2024-06-21 13:54:28 +0700
+Processing by Api::V1::WeathersController#get_weather as */*
+Filter chain halted as :set_location rendered or redirected
+Completed 500 Internal Server Error in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 490)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:54:35 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 1132ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2550)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 13:54:36 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 169ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 2553)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:54:43 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 462ms (ActiveRecord: 0.0ms | Allocations: 1916)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:65:in `throw'
+app/controllers/api/v1/weathers_controller.rb:65:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:55:14 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 763ms (ActiveRecord: 0.0ms | Allocations: 1891)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:65:in `throw'
+app/controllers/api/v1/weathers_controller.rb:65:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:55:27 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 761ms (ActiveRecord: 0.0ms | Allocations: 1890)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:65:in `throw'
+app/controllers/api/v1/weathers_controller.rb:65:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:55:37 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 757ms (ActiveRecord: 0.0ms | Allocations: 1873)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:65:in `throw'
+app/controllers/api/v1/weathers_controller.rb:65:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:55:48 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 466ms (ActiveRecord: 0.0ms | Allocations: 1871)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:65:in `throw'
+app/controllers/api/v1/weathers_controller.rb:65:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:57:32 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 1235ms (ActiveRecord: 0.0ms | Allocations: 3484)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:65:in `throw'
+app/controllers/api/v1/weathers_controller.rb:65:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 13:58:27 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 938ms (ActiveRecord: 0.0ms | Allocations: 3482)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:65:in `throw'
+app/controllers/api/v1/weathers_controller.rb:65:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:53:in `get_history'
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 13:58:55 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 769ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1774)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:59:00 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Filter chain halted as :set_location rendered or redirected
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 494)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:59:03 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Filter chain halted as :set_location rendered or redirected
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 469)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 13:59:07 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Filter chain halted as :set_location rendered or redirected
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 468)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:02:43 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 708ms (ActiveRecord: 0.0ms | Allocations: 3485)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:67:in `throw'
+app/controllers/api/v1/weathers_controller.rb:67:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:51:in `get_history'
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:02:47 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 763ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1438)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:02:47 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 631ms (Views: 0.4ms | ActiveRecord: 15.6ms | Allocations: 21807)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:02:52 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 1089ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 2682)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:03:07 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 57371ms (ActiveRecord: 0.0ms | Allocations: 21704)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"undefined method `[]' for nil"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:67:in `throw'
+app/controllers/api/v1/weathers_controller.rb:67:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:51:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:04:14 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 1989ms (ActiveRecord: 0.0ms | Allocations: 10255)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"You must type your city previously!"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:67:in `throw'
+app/controllers/api/v1/weathers_controller.rb:67:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:51:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:04:20 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 14907ms (ActiveRecord: 0.0ms | Allocations: 29201)
+
+
+  
+UncaughtThrowError (uncaught throw {:json=>{:error=>"You must type your city previously!"}, :status=>500}):
+  
+app/controllers/api/v1/weathers_controller.rb:67:in `throw'
+app/controllers/api/v1/weathers_controller.rb:67:in `rescue in get_history'
+app/controllers/api/v1/weathers_controller.rb:51:in `get_history'
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:04:48 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 3303ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 10055)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:04:55 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 672ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2172)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:06:06 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 1002ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 3322)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:06:14 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 8265ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 20861)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:06:33 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2762ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 10011)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:06:40 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 3606ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 7968)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:06:48 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 680ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1849)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:06:49 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 953ms (Views: 0.4ms | ActiveRecord: 15.3ms | Allocations: 21793)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:06:50 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 155ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 1217)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:06:50 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 170ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1742)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:06:50 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 142ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1216)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:06:50 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 184ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1747)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:06:52 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 808ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 2687)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:06:55 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 175ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1795)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 14:07:01 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 778ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1865)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20&quantity=4" for 127.0.0.1 at 2024-06-21 14:07:06 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh ", "quantity"=>"4"}
+Completed 200 OK in 780ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1768)
+
+
+Started GET "/api/v1/weathers?location=London" for 127.0.0.1 at 2024-06-21 14:07:11 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"London"}
+Completed 200 OK in 766ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 1792)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=4" for 127.0.0.1 at 2024-06-21 14:07:18 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"4"}
+Completed 200 OK in 1090ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1790)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=8" for 127.0.0.1 at 2024-06-21 14:07:19 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"8"}
+Completed 200 OK in 780ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1937)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=12" for 127.0.0.1 at 2024-06-21 14:07:20 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"12"}
+Completed 200 OK in 1052ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1740)
+
+
+Started GET "/api/v1/weathers/forecast?location=London&quantity=13" for 127.0.0.1 at 2024-06-21 14:07:22 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"London", "quantity"=>"13"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 456)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh" for 127.0.0.1 at 2024-06-21 14:09:35 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as */*
+  Parameters: {"location"=>"Ho Chi Minh"}
+Completed 200 OK in 501ms (Views: 0.4ms | ActiveRecord: 19.2ms | Allocations: 23538)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:09:40 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 466)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:09:42 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 457)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:09:44 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 139ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1226)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:09:44 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 146ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1843)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=4" for 127.0.0.1 at 2024-06-21 14:09:48 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"4"}
+Completed 200 OK in 1093ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1806)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=8" for 127.0.0.1 at 2024-06-21 14:09:51 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"8"}
+Completed 200 OK in 1088ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1911)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:11:35 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 6ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1599)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:11:37 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 457)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:11:39 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 1219ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1853)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:11:40 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 903ms (Views: 0.3ms | ActiveRecord: 15.6ms | Allocations: 21748)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=4" for 127.0.0.1 at 2024-06-21 14:11:49 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"4"}
+Completed 200 OK in 155ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 1776)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=8" for 127.0.0.1 at 2024-06-21 14:11:53 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"8"}
+Completed 200 OK in 152ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1868)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=12" for 127.0.0.1 at 2024-06-21 14:11:59 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"12"}
+Completed 200 OK in 1062ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1745)
+
+
+Started GET "/api/v1/weathers/forecast?location=Ho%20Chi%20Minh%20City&quantity=13" for 127.0.0.1 at 2024-06-21 14:12:04 +0700
+Processing by Api::V1::WeathersController#get_forecast_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City", "quantity"=>"13"}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi" for 127.0.0.1 at 2024-06-21 14:12:09 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi"}
+Completed 200 OK in 778ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1767)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi" for 127.0.0.1 at 2024-06-21 14:12:14 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi"}
+Completed 200 OK in 157ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 1762)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi" for 127.0.0.1 at 2024-06-21 14:12:15 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi"}
+Completed 200 OK in 187ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1764)
+
+
+Started GET "/api/v1/weathers?location=Ho%20chi" for 127.0.0.1 at 2024-06-21 14:12:20 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho chi"}
+Completed 200 OK in 798ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1788)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:13:59 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 202ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1221)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:13:59 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 155ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1765)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:16:49 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 457)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:16:51 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 457)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:16:53 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 467ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1218)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:16:54 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 452ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1769)
+
+
+Started GET "/api/v1/weathers?location=" for 127.0.0.1 at 2024-06-21 14:18:11 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 456)
+
+
+Started GET "/api/v1/weathers/history?location=" for 127.0.0.1 at 2024-06-21 14:18:13 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>""}
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 456)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:18:14 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 178ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1246)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:18:15 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 154ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1818)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:18:16 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 1105ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2606)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:20:30 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 822ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1229)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:20:31 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 764ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1836)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:21:53 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 168ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1210)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:21:53 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 153ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1763)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:22:05 +0700
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 170ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1222)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:22:05 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 168ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1763)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:22:08 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 808ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2591)
+
+
+Started GET "/api/v1/weathers/location?ip=14.169.94.214" for 127.0.0.1 at 2024-06-21 14:23:09 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeathersController#get_location as HTML
+  Parameters: {"ip"=>"14.169.94.214"}
+Completed 200 OK in 351ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2999)
+
+
+Started GET "/api/v1/weathers?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:23:10 +0700
+Processing by Api::V1::WeathersController#get_weather as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 258ms (Views: 0.4ms | ActiveRecord: 16.1ms | Allocations: 21734)
+
+
+Started GET "/api/v1/weathers/history?location=Ho%20Chi%20Minh%20City" for 127.0.0.1 at 2024-06-21 14:23:13 +0700
+Processing by Api::V1::WeathersController#get_history as HTML
+  Parameters: {"location"=>"Ho Chi Minh City"}
+Completed 200 OK in 150ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 3139)
+
+

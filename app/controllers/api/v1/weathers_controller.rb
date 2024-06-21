@@ -3,10 +3,14 @@ require_relative '../../../service/weather_service'
 require 'date'
 
 class Api::V1::WeathersController < ApplicationController
-  before_action :set_location, :set_key, :set_day_for_forecast, only: [:get_weather, :get_forecast_weather, :get_history]
+  before_action :set_location, :set_key, :set_day_for_forecast, only: [:get_weather, :get_forecast_weather, :get_history, :get_location]
 
   def get_weather
     begin
+      if @location.nil? || @location == ""
+        raise "You must type your city previously!"
+      end
+
       @weather_service = WeatherService.new(@key,@days)
       current_hour = Time.now.hour
 
@@ -14,7 +18,6 @@ class Api::V1::WeathersController < ApplicationController
 
       render json: weather_response, status: 200
     rescue => e
-      puts e.message
       render json: { error: e.message }, status: 500
     end
   end
@@ -27,12 +30,12 @@ class Api::V1::WeathersController < ApplicationController
         raise "You must search previously!"
       end
 
-      if quantity % 4 != 0
-        raise "Some error occur, please reload page!"
+      if quantity >=13
+        raise "Can't forecast over 14 days!"
       end
 
-      if quantity >=14
-        raise "Can't forecast over 14 days!"
+      if quantity % 4 != 0
+        raise "Some error occur, please reload page!"
       end
 
       current_hour = Time.now.hour
@@ -50,6 +53,10 @@ class Api::V1::WeathersController < ApplicationController
 
   def get_history
     begin
+      if @location.nil? || @location == ""
+        raise "You must type your city previously!"
+      end
+
       @weather_service = WeatherService.new(@key,@days)
 
       time = Time.now
@@ -64,8 +71,20 @@ class Api::V1::WeathersController < ApplicationController
     end
   end
 
-  def location_params
-    params.permit(:location)
+  def get_location
+    begin
+      if params[:ip].nil? || params[:ip] == ""
+        raise "Can't find your IP!"
+      end
+
+      @weather_service = WeatherService.new(@key,@days)
+      ip = params[:ip]
+
+      location_response = @weather_service.get_location(ip)
+      render json: location_response['city'], status: 200
+    rescue => e
+      render json: { error: e.message }, status: 500
+    end
   end
 
   private
