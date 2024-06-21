@@ -17,6 +17,7 @@ class Api::V1::MailersController < ApplicationController
   def unsubscribe
     begin
       @user_service.unsubscribe(@email)
+      UserMailer.unsubscribed_email(@email).deliver_now
       render json: {message: "You have been successfully unsubscribed."}
     rescue => e
       render json: {error: e.message}

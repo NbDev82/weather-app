@@ -1,0 +1,15 @@
+<h1>Daily Weather Summary</h1>
+<p>Hello <%= @user.email %>,</p>
+<p>Here is your daily weather summary:</p>
+
+<div>
+  <h2><%= @weather_summary.location %> - <%= @weather_summary.date %></h2>
+  <p>Temperature: <%= @weather_summary.temperature %></p>
+  <p>Wind: <%= @weather_summary.wind %></p>
+  <p>Humidity: <%= @weather_summary.humidity %></p>
+  <p>Condition: <%= @weather_summary.condition %></p>
+  <img src="<%= @weather_summary.url_img %>" alt="Weather Condition Image">
+</div>
+<hr>
+
+<p>Check the latest weather updates at: <%= link_to 'Weather Site', 'https://weather-react-app-3407da0f838b.herokuapp.com/' %></p>
