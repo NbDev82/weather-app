@@ -9,6 +9,13 @@ Rails.application.routes.draw do
           get 'location' => 'weathers#get_location'
         end
       end
+
+      resources :mailers, only: [:index, :show, :create, :destroy] do
+        collection do
+          get 'register' => 'mailers#register'
+          get 'unsubscribe' => 'mailers#unsubscribe'
+        end
+      end
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
