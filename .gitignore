@@ -11,7 +11,7 @@
 /tmp/
 
 /config/master.key
-
+/log/development.log
 # Used by dotenv library to load environment variables.
 # .env
 
