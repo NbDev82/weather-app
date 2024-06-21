@@ -7,6 +7,7 @@ class Api::V1::MailersController < ApplicationController
   def register
     begin
       @user_service.register(@email, @location)
+      UserMailer.welcome_email(@email).deliver_now
       render json: {message: "You have been successfully registered."}
     rescue => e
       render json: {error: e.message}
