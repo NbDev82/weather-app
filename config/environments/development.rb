@@ -45,7 +45,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'https://weather-api-app-ruby-ca24058ecac9.herokuapp.com',
+    domain:               'example.com',
     user_name:            'phimrap748@gmail.com',
     password:             'zfze salm oaqe fell',
     authentication:       'plain',
