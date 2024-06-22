@@ -1,25 +1,39 @@
-# README
+# MyApp Setup Guide
+Welcome to my WeatherApp! Follow the instructions below to set up and run the application.
+# Prerequisites
+Ensure you have the following installed:
+* Ruby
+* Rails
+* Bundler
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Setup Instructions
+_**1. Install Dependencies**_
 
-Things you may want to cover:
+- Open your terminal and navigate to the project directory. Run the following command to install all the required gems:
+```sh
+bundle install
+```
 
-* Ruby version
+**_2.Migrate the Database_**
 
-* System dependencies
+- Once the dependencies are installed, set up the database by running:
 
-* Configuration
+```sh
+rake db:migrate
+```
+- After this command completes, you should see a message indicating that the database migrations were successful.
 
-* Database creation
+**_3. Start the Rails Server_**
 
-* Database initialization
+- Finally, start the Rails server with the following command:
 
-* How to run the test suite
+```sh
+rails server -b 127.0.0.1 -p 3001 -e development
+```
+This will start the server on localhost at port 3001 in development mode.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-"# weather-app" 
+# Stopping the Application
+- To stop the server, go back to the terminal where the server is running and press:
+```sh
+Ctrl + C
+```
