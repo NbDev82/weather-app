@@ -34,7 +34,7 @@ class UserMailer < ApplicationMailer
     @weathers=[]
 
     User.find_each do |user|
-      @weather = @weathers.find(email: user.email)
+      @weather = @weathers.find(location: user.location)
 
       unless @weather
         weather_response = @weather_service.forecast_weather(@location, hour_daily, nil)
