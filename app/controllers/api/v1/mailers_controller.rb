@@ -10,7 +10,7 @@ class Api::V1::MailersController < ApplicationController
       UserMailer.welcome_email(@email).deliver_now
       render json: {message: "You have been successfully registered."}
     rescue => e
-      render json: {error: e.message}
+      render json: {error: e.message}, status: 500
     end
   end
 
@@ -20,7 +20,7 @@ class Api::V1::MailersController < ApplicationController
       UserMailer.unsubscribed_email(@email).deliver_now
       render json: {message: "You have been successfully unsubscribed."}
     rescue => e
-      render json: {error: e.message}
+      render json: {error: e.message}, status: 500
     end
   end
 
